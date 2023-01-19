@@ -6,17 +6,33 @@ import {useState} from "react";
 
 
 function Expenses(props) {
-    const recivedExpenseData = props.expenseData
-    const expenseitems = []
-    recivedExpenseData.forEach(element => {
-        expenseitems.push(<ExpenseItem expenseData={element}></ExpenseItem>)
-    })
+    const [filteredYear,setFilteredyear] = useState('2023')
 
+    console.log('Year data in Expenses.js ' + filteredYear)
+
+    const filterChangeHandler = (year) => {
+        console.log('Filter change handled by Expenses.js')
+        console.log(year + ' in Expenses.js')
+        setFilteredyear(year)
+    }
+
+    props.expenses.map((expense) => {
+        console.log(expense)
+    })
 
     return (
         <Card className='expenses'>
-            <ExpensesFilter></ExpensesFilter>
-            {expenseitems}
+            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpensesFilter>
+            {
+                props.expenses.map((expense) => {
+                    return <ExpenseItem
+                    id={expense.id}
+                    title={expense.title}
+                    amount={expense.amount}
+                    date={expense.date}
+                    ></ExpenseItem>
+                })
+            }
         </Card>
     )
 }
