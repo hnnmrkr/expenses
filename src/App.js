@@ -6,21 +6,21 @@ const App = () => {
     const expenses = [{
         date: new Date(2023, 0, 10),
         title: 'New book',
-        price: 19.99
+        price: 30.99
     }, {
         date: new Date(2023, 0, 12),
-        title: 'Ice Cream',
-        price: 4.99
+        title: 'New jeans',
+        price: 19.99
     }]
 
-    const addExpensehanlder = (expense) => {
+    const addExpensehandler = (expense) => {
         console.log('In App.js')
         console.log(expense)
     }
 
     return (
         <div className="App">
-            <NewExpense onAddExpense={addExpensehanlder}></NewExpense>
+            <NewExpense onAddExpense={addExpensehandler}></NewExpense>
             <Expenses expenseData={expenses}></Expenses>
         </div>
     );
