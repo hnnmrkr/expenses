@@ -27,6 +27,8 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
+    const [isShown, setIsShown] = useState(false);
+
 
     const addExpensehandler = (expense) => {
         console.log('In App.js')
